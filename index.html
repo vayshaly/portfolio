@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaishali Sharma</title>
+<meta name="description" content="Things I have built, written, and found out. Work by Vaishali Sharma.">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#FFFFFF;
+  --blush:#FBE9EE;
+  --blush-deep:#F6D8E1;
+  --rose:#D62C62;
+  --ink:#000000;
+  --ash:#6E666A;
+  --display:"Instrument Serif",Georgia,serif;
+  --text:"Inter",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;padding:0;
+  background:var(--paper);color:var(--ink);
+  font-family:var(--text);font-size:16.5px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:60rem;margin:0 auto;padding:0 24px}
+.band{background:var(--blush)}
+.hero{padding:7rem 0 5.5rem;max-width:46rem}
+.hero h1{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(4rem,15vw,8.5rem);line-height:.86;
+  letter-spacing:-.025em;margin:0 0 2rem;
+}
+.hero h1 .two{display:block;padding-left:.08em}
+.lede{font-size:clamp(1.12rem,2.4vw,1.4rem);line-height:1.5;margin:0 0 1.1rem;max-width:34rem}
+.lede em{font-family:var(--display);font-style:italic;font-size:1.12em}
+.sub{color:var(--ash);margin:0 0 2.4rem;max-width:33rem}
+.meta{font-size:.92rem;color:var(--ash);margin:0}
+.meta a{color:var(--ink);text-decoration:none;box-shadow:inset 0 -1.5px 0 rgba(0,0,0,.28);transition:box-shadow .15s}
+.meta a:hover{box-shadow:inset 0 -2px 0 var(--rose)}
+.filter{
+  display:flex;flex-wrap:wrap;gap:.5rem;
+  padding:1.1rem 0;margin:0 0 .5rem;
+  border-bottom:1px solid var(--blush-deep);
+  position:sticky;top:0;background:var(--paper);z-index:5;
+}
+.filter button{
+  font:inherit;font-size:.88rem;font-weight:500;
+  padding:.42rem 1rem;border-radius:999px;cursor:pointer;
+  border:1px solid var(--blush-deep);background:var(--paper);color:var(--ash);
+  transition:background .14s,color .14s,border-color .14s;
+}
+.filter button:hover{border-color:var(--rose);color:var(--ink)}
+.filter button[aria-pressed="true"]{background:var(--rose);border-color:var(--rose);color:#fff}
+.filter .count{font-variant-numeric:tabular-nums;opacity:.65;margin-left:.4rem}
+:is(button,a):focus-visible{outline:2.5px solid var(--rose);outline-offset:3px;border-radius:3px}
+.list{margin:0 0 5rem}
+.item{border-bottom:1px solid var(--blush-deep)}
+.item[hidden]{display:none}
+.row{
+  display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:baseline;
+  width:100%;text-align:left;font:inherit;color:inherit;
+  background:none;border:0;padding:1.5rem 0;cursor:pointer;
+  transition:padding-left .18s;
+}
+.row:hover,.item.open .row{padding-left:.6rem}
+.row:hover .t,.item.open .t{color:var(--rose)}
+.t{font-family:var(--display);font-size:clamp(1.3rem,3.4vw,1.75rem);line-height:1.2;transition:color .14s}
+.t .kind{font-family:var(--text);font-size:.74rem;font-weight:500;color:var(--ash);display:block;margin-bottom:.35rem;letter-spacing:.01em}
+.sig{font-variant-numeric:tabular-nums;font-size:.95rem;color:var(--ash);white-space:nowrap}
+.item.open .sig{color:var(--rose)}
+.panel{display:none;padding:0 0 2rem}
+.item.open .panel{display:block;animation:open .22s ease}
+@keyframes open{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+.panel .inner{background:var(--blush);padding:1.6rem 1.8rem;border-radius:4px;max-width:44rem}
+.panel p{margin:0 0 .9rem}
+.panel p:last-child{margin:0}
+.quote{background:var(--blush-deep);padding:1.1rem 1.3rem;border-radius:3px;margin:1.1rem 0;font-family:var(--display);font-size:1.12rem;line-height:1.45}
+.nums{display:flex;flex-wrap:wrap;gap:1.6rem 2.6rem;margin:1.3rem 0}
+.nums b{font-family:var(--display);font-weight:400;font-size:2.1rem;line-height:1;display:block;color:var(--rose)}
+.nums span{font-size:.78rem;color:var(--ash);display:block;margin-top:.3rem}
+.go{display:inline-block;margin-top:.5rem;font-size:.92rem;font-weight:500;color:var(--ink);text-decoration:none;box-shadow:inset 0 -2px 0 var(--rose);transition:background .15s}
+.go:hover{background:var(--blush-deep)}
+footer{border-top:1.5px solid var(--ink);padding:3rem 0 6rem;display:grid;gap:2.5rem;grid-template-columns:1fr}
+footer h2{font-family:var(--display);font-weight:400;font-size:clamp(2rem,6vw,3rem);line-height:1;margin:0 0 1rem;letter-spacing:-.02em}
+footer p{margin:0 0 .7rem;max-width:30rem;color:var(--ash)}
+footer a{color:var(--ink);text-decoration:none;box-shadow:inset 0 -1px 0 var(--blush-deep)}
+footer a:hover{box-shadow:inset 0 -2px 0 var(--rose)}
+.cred{font-size:.84rem;color:var(--ash);max-width:26rem}
+@media (min-width:860px){
+  footer{grid-template-columns:1.2fr 1fr;align-items:start}
+}
+@media (max-width:620px){
+  .wrap{padding:0 20px}
+  .hero{padding:4.5rem 0 3rem}
+  .row{grid-template-columns:1fr;gap:.4rem;padding:1.25rem 0}
+  .sig{font-size:.88rem}
+  .panel .inner{padding:1.3rem 1.3rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="band"><div class="wrap">
+<section class="hero">
+  <h1>Vaishali<span class="two">Sharma</span></h1>
+  <p class="lede">I write the thing, ship the thing, and then go and check whether it <em>actually worked</em>.</p>
+  <p class="sub">Most of what is below started as something nobody asked me to look at. Two internal measures that disagreed. A claim resting on four different numbers. A campaign everyone thought was fine.</p>
+  <p class="meta">
+    <a href="mailto:vaishali9t9@gmail.com">vaishali9t9@gmail.com</a> &nbsp; <a href="https://www.linkedin.com/in/vaishali-sharma1/">LinkedIn</a> &nbsp; <a href="https://github.com/vayshaly?tab=repositories">GitHub</a>
+  </p>
+</section>
+</div></div>
+
+<div class="wrap">
+
+<nav class="filter" aria-label="Filter work">
+  <button type="button" data-f="all" aria-pressed="true">Everything<span class="count">14</span></button>
+  <button type="button" data-f="built" aria-pressed="false">Built<span class="count">5</span></button>
+  <button type="button" data-f="written" aria-pressed="false">Written<span class="count">4</span></button>
+  <button type="button" data-f="found" aria-pressed="false">Found out<span class="count">5</span></button>
+</nav>
+
+<div class="list" id="list">
+
+  <div class="item" data-k="found">
+    <button class="row" type="button" aria-expanded="false">
+      <span class="t"><span class="kind">Found out</span>Four numbers, one claim</span>
+      <span class="sig">24 / 80 / 57 / 18</span>
+    </button>
+    <div class="panel"><div class="inner">
+      <p>I read our own sales page element by element, sitting in the buyer's seat rather than the team's, and ranked every problem by what would stop a purchase rather than by what was easy to fix. A visible rendering bug came second.</p>
+      <p class="quote">The page says 19 of 24 participants improved. Your campaign proposal says 80. Your emails have said 57 and 18. I am buying a measurement product. If I find two different participant counts, I stop trusting the measurement, and the measurement is the only thing making you different from twenty other AI courses.</p>
+      <p>I sent it to the people who had produced those numbers, who are also the people I report to. That was the uncomfortable part and I think it was the useful part.</p>
+    </div></div>
+  </div>
+
+  <div class="item" data-k="found">
+    <button class="row" type="button" aria-expanded="false">
+      <span class="t"><span class="kind">Found out</span>Two measures of the same thing, disagreeing</span>
+      <span class="sig">2 lessons / 6 minutes</span>
+    </button>
+    <div class="panel"><div class="inner">
+      <p>Our platform marked a lesson complete when someone clicked a button. The video ran through a separate service that recorded what was actually played. Nobody had joined the two, because there was no reason to expect them to disagree.</p>
+      <p>They disagree. One participant had marked two lessons complete against six minutes of video watched. Another had marked nothing and watched fifty-nine. A third had marked more lessons done than anyone in the cohort with no playback recorded at all.</p>
+      <p>Each has an innocent explanation. The point is not that anyone is suspicious. The point is that the two measures do not track each other, and we had been reporting one as though it meant the other. Completion is no longer quoted as evidence of learning.</p>
+    </div></div>
+  </div>
+
+  <div class="item" data-k="found">
+    <button class="row" type="button" aria-expanded="false">
+      <span class="t"><span class="kind">Found out</span>A campaign that opened well and converted badly</span>
+      <span class="sig">23% open, &lt;1% sale</span>
+    </button>
+    <div class="panel"><div class="inner">
+      <p>968 contacts. A healthy open rate and almost nothing behind it. The instinct in the room was to rewrite the copy. The copy was not the problem.</p>
+      <div class="nums">
+        <div><b>23%</b><span>Opened</span></div>
+        <div><b>0.45%</b><span>Clicked, before</span></div>
+        <div><b>~4%</b><span>Clicked, after</span></div>
+      </div>
+      <p>The email carried one call to action and it went straight to a purchase page. For someone who had heard of us ten seconds earlier there was no step between interest and paying. We replaced it with a free first day and changed nothing else of substance.</p>
+    </div></div>
+  </div>
+
+  <div class="item" data-k="found">
+    <button class="row" type="button" aria-expanded="false">
+      <span class="t"><span class="kind">Found out</span>The segment I recommended we drop</span>
+      <span class="sig">25 declines in 71</span>
+    </button>
+    <div class="panel"><div class="inner">
+      <p>The team wanted to scale a target segment. I read all 71 contacts in it first and found 25 explicit declines and no genuine buying interest in the rest.</p>
+      <p>My recommendation was to abandon the segment rather than put more volume through it, which was not what anyone wanted to hear. It was dropped and the list rebuilt. Knowing when to stop is a cheaper skill than knowing how to push harder, and far rarer.</p>
+    </div></div>
+  </div>
+
+  <div class="item" data-k="found">
+    <button class="row" type="button" aria-expanded="false">
+      <span class="t"><span class="kind">Found out</span>Why nobody was finding the videos</span>
+      <span class="sig">0.0% vs 7.89% CTR</span>
+    </button>
+    <div class="panel"><div class="inner">
+      <p>A ten video series was going nowhere. When I pulled the traffic sources, 67 percent of views came from inside the playlist itself, which means almost nobody arrived from outside. Two episodes had a click-through rate of 0.0 percent: YouTube showed them to people and not one person clicked.</p>
+      <p>One video broke the pattern at 7.89 percent. It was the only one in the series not titled by its episode number. It was titled as the thing you would walk away with.</p>
+      <p>The series was never failing on content. Every thumbnail was saying "Day 7" to someone who had never heard of day 1.</p>
+    </div></div>
+  </div>
+
+  <div class="item" data-k="built">
+    <button class="row" type="button" aria-expanded="false">
+      <span class="t"><span class="kind">Built</span>The Perfumery Handbook</span>
+      <span class="sig">Live</span>
+    </button>
+    <div class="panel"><div class="inner">
+      <p>A technical reference on fragrance chemistry, written for people who are not chemists. Researched, written, designed, built and hosted on my own.</p>
+      <p>It is the clearest example of the thing I am actually good at: taking a subject with real depth and making it usable by someone who arrived knowing nothing, without flattening what makes it interesting.</p>
+      <a class="go" href="https://theperfumeryhandbook.com">theperfumeryhandbook.com</a>
+    </div></div>
+  </div>
+
+  <div class="item" data-k="built">
+    <button class="row" type="button" aria-expanded="false">
+      <span class="t"><span class="kind">Built</span>Lumescent</span>
+      <span class="sig">Live</span>
+    </button>
+    <div class="panel"><div class="inner">
+      <p>An AI fragrance recommendation tool, built end to end: the model logic, the interface, the copy, the hosting. Nobody handed me a spec.</p>
+      <p>Writing about a product is easier once you have had to make the decisions inside one. What goes on the first screen, what gets cut, what a person will and will not read before they leave.</p>
+      <a class="go" href="https://lumescent-upgrade-deploy.vercel.app">lumescent-upgrade-deploy.vercel.app</a>
+    </div></div>
+  </div>
+
+  <div class="item" data-k="built">
+    <button class="row" type="button" aria-expanded="false">
+      <span class="t"><span class="kind">Built</span>AI4Innovation toolkit</span>
+      <span class="sig">100+ prompt systems</span>
+    </button>
+    <div class="panel"><div class="inner">
+      <p>More than a hundred prompt systems for a methods product that is live and in use. Each one names the task, states the constraints, and describes what an acceptable answer looks like, including what the model should refuse to do.</p>
+      <p>This turned out to be the same discipline as product messaging. In both you are deciding, in advance and in writing, what good output is. Most weak messaging is not badly written. It was never specified.</p>
+      <a class="go" href="https://ai4innovation.pythonanywhere.com/">ai4innovation.pythonanywhere.com</a>
+    </div></div>
+  </div>
+
+  <div class="item" data-k="built">
+    <button class="row" type="button" aria-expanded="false">
+      <span class="t"><span class="kind">Built</span>A pitch generator</span>
+      <span class="sig">Brief in, formats out</span>
+    </button>
+    <div class="panel"><div class="inner">
+      <p>An application that takes a user's brief and produces pitches in several different formats from it.</p>
+      <p>The useful part of building it was having to be precise about what actually changes between one format and another, which is a question most people answer by instinct and get wrong. Same research, different reader, different length, different first sentence.</p>
+    </div></div>
+  </div>
+
+  <div class="item" data-k="built">
+    <button class="row" type="button" aria-expanded="false">
+      <span class="t"><span class="kind">Built</span>Himalayan Ridge</span>
+      <span class="sig">Live</span>
+    </button>
+    <div class="panel"><div class="inner">
+      <p>A booking site for a glamping business, which I help build and maintain. Real customers, real reservations, and the unglamorous work of keeping something running after launch day.</p>
+      <a class="go" href="https://himalayanridge.in">himalayanridge.in</a>
+    </div></div>
+  </div>
+
+  <div class="item" data-k="written">
+    <button class="row" type="button" aria-expanded="false">
+      <span class="t"><span class="kind">Written</span>Chapter 20, The Generative Organization</span>
+      <span class="sig">Published book</span>
+    </button>
+    <div class="panel"><div class="inner">
+      <p>A chapter in a published book about how organisations work with AI in practice, rather than how they describe it in announcements.</p>
+      <a class="go" href="https://books.genorg.ai">books.genorg.ai</a>
+    </div></div>
+  </div>
+
+  <div class="item" data-k="written">
+    <button class="row" type="button" aria-expanded="false">
+      <span class="t"><span class="kind">Written</span>Disciplined AI, the course</span>
+      <span class="sig">Ten days, ten minutes each</span>
+    </button>
+    <div class="panel"><div class="inner">
+      <p>I wrote the chapters of a ten day course that takes someone with no technical background and leaves them able to work with AI without handing over their judgement.</p>
+      <p>Ten minutes a day, one idea at a time, and every lesson has to survive being read by a person who is tired and not yet convinced. That constraint improved my writing more than any style guide has.</p>
+    </div></div>
+  </div>
+
+  <div class="item" data-k="written">
+    <button class="row" type="button" aria-expanded="false">
+      <span class="t"><span class="kind">Written</span>ViT-SmartAgri</span>
+      <span class="sig">MDPI Agronomy, 2024</span>
+    </button>
+    <div class="panel"><div class="inner">
+      <p>A co-authored paper on a vision transformer for smartphone-based plant disease detection, in <em>Agronomy</em>, volume 14, issue 2. I contributed to the model architecture design, the data collection and the analysis.</p>
+      <p>The binding constraint was never accuracy in a lab. It was running inference on the hardware a smallholder farmer already owns. Most of the interesting decisions came from that.</p>
+      <a class="go" href="https://doi.org/10.3390/agronomy14020327">doi.org/10.3390/agronomy14020327</a>
+    </div></div>
+  </div>
+
+  <div class="item" data-k="written">
+    <button class="row" type="button" aria-expanded="false">
+      <span class="t"><span class="kind">Written</span>Selling, Systematically</span>
+      <span class="sig">Handbook</span>
+    </button>
+    <div class="panel"><div class="inner">
+      <p>A sales handbook and its companion site, written from the inside of an outreach operation rather than from theory: what a target list is actually for, why most follow-up dies, and what a reply is worth compared to an impression.</p>
+    </div></div>
+  </div>
+
+</div>
+
+<footer>
+  <div>
+    <h2>Talk to me</h2>
+    <p>I am interested in work where someone has to be responsible for whether a thing worked, not only for whether it shipped.</p>
+    <p>
+      <a href="mailto:vaishali9t9@gmail.com">vaishali9t9@gmail.com</a><br>
+      +91 99579 41577<br>
+      <a href="https://www.linkedin.com/in/vaishali-sharma1/">linkedin.com/in/vaishali-sharma1</a>
+    </p>
+  </div>
+  <div>
+    <p class="cred">B.Tech in Information Technology, Gauhati University Institute of Science and Technology. Google Data Analytics Professional Certificate. Currently working through a self-directed curriculum in AI governance.</p>
+    <p class="cred" style="margin-top:1rem">This page was designed and built by me. Instrument Serif and Inter, no template.</p>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var list = document.getElementById('list');
+  var items = Array.prototype.slice.call(list.querySelectorAll('.item'));
+  var btns = Array.prototype.slice.call(document.querySelectorAll('.filter button'));
+  list.addEventListener('click', function(e){
+    var row = e.target.closest('.row');
+    if(!row) return;
+    var item = row.parentNode;
+    var open = item.classList.toggle('open');
+    row.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      var f = b.dataset.f;
+      btns.forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      items.forEach(function(it){
+        var show = (f === 'all' || it.dataset.k === f);
+        it.hidden = !show;
+        if(!show){
+          it.classList.remove('open');
+          it.querySelector('.row').setAttribute('aria-expanded','false');
+        }
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
